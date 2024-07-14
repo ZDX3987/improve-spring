@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+    <beans>
+        <bean id="baseChild" class="cn.zhangdx.pojo.BaseChild">
+<!--            <constructor-arg name="childToy" ref="childToy"/>-->
+        </bean>
+        <bean id="childToy" class="cn.zhangdx.pojo.ChildToy">
+            <constructor-arg name="toyName" value="奥特曼"/>
+        </bean>
+
+        <bean id="customizedBeanFactory222" class="cn.zhangdx.component.beanfactorypostporcessor.Customized22BeanFactoryPostProcessor" />
+        <bean id="customizedBeanFactory" class="cn.zhangdx.component.beanfactorypostporcessor.CustomizedBeanFactoryPostProcessor" />
+        <bean id="customizedBeanFactory33" class="cn.zhangdx.component.beanfactorypostporcessor.Customized33BeanFactoryPostProcessor" />
+        <bean id="customizedBeanPost" class="cn.zhangdx.component.beanpostporcessor.CustomizedBeanPostProcessor" />
+        <bean id="customizedBeanFactoryRegistry" class="cn.zhangdx.component.CustomizedBeanDefinitionRegistryPostProcessor" />
+        <bean id="userLoginEventPublisher" class="cn.zhangdx.component.event.UserLoginEventPublisher">
+        </bean>
+        <bean id="userLoginListener" class="cn.zhangdx.component.event.UserLoginListener"/>
+<!--        <bean id="customizedBeanFactoryPostProcessor" class="cn.zhangdx.component.CustomizedBeanFactoryPostProcessor"/>-->
+    </beans>
+
+
+</beans>
