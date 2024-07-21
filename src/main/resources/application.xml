@@ -8,14 +8,18 @@ http://www.springframework.org/schema/aop
 
     <bean id="car" name="myCar" class="cn.zhangdx.service.Car">
         <constructor-arg name="name" value="奔驰"/>
-
     </bean>
 
+<!--    声明切面的bean-->
     <bean id="aopService" class="cn.zhangdx.aop.AopService"/>
 
+<!--    声明AOP配置-->
     <aop:config>
+<!--        声明切面-->
         <aop:aspect id="carDo" ref="aopService">
+<!--            声明切点-->
             <aop:pointcut id="point" expression="execution(* cn.zhangdx.service.Car.*(..))"/>
+<!--            声明通知-->
             <aop:before method="before" pointcut-ref="point"/>
         </aop:aspect>
     </aop:config>

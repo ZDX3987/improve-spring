@@ -1,6 +1,5 @@
 package cn.zhangdx;
 
-import cn.zhangdx.service.Car;
 import cn.zhangdx.service.Message;
 import cn.zhangdx.service.MessageService;
 import cn.zhangdx.service.MessageServiceImpl;
@@ -9,19 +8,10 @@ import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefiniti
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Hello world!
- */
-public class App {
+public class AnnotationConfigApp {
+
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:application.xml");
-        System.out.println("Spring Context 启动成功");
-        Car car = applicationContext.getBean(Car.class);
-        car.start();
-        car.stop();
-
         AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
         GenericBeanDefinition genericBeanDefinition = new GenericBeanDefinition();
         genericBeanDefinition.setBeanClass(Message.class);
@@ -47,6 +37,5 @@ public class App {
         System.out.println(messageService.getMessage());
 
         System.out.println(beanDefinition.getPropertyValues());
-
     }
 }
