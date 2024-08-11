@@ -11,8 +11,14 @@ public class ChildToy {
 
     private String toyName;
 
+    public ChildToy() {}
+
     public ChildToy(String toyName) {
         this.toyName = toyName;
+    }
+
+    public void printMyName() {
+        System.out.println("我的名字是：" + toyName);
     }
 
     public String toString() {

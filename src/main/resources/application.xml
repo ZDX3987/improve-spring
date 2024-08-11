@@ -7,20 +7,27 @@ http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
     <bean id="car" name="myCar" class="cn.zhangdx.service.Car">
-        <constructor-arg name="name" value="奔驰"/>
+        <property name="name" value="奔驰"/>
+    </bean>
+    <bean id="userDataImport" class="cn.zhangdx.service.impl.UserDataImportServiceImpl">
+
     </bean>
 
 <!--    声明切面的bean-->
     <bean id="aopService" class="cn.zhangdx.aop.AopService"/>
 
 <!--    声明AOP配置-->
-    <aop:config>
+    <aop:config expose-proxy="true">
 <!--        声明切面-->
         <aop:aspect id="carDo" ref="aopService">
 <!--            声明切点-->
-            <aop:pointcut id="point" expression="execution(* cn.zhangdx.service.Car.*(..))"/>
+            <aop:pointcut id="carPointCut" expression="execution(* cn.zhangdx.service.Car.start(..))"/>
 <!--            声明通知-->
-            <aop:before method="before" pointcut-ref="point"/>
+            <aop:before method="customizedBeforeProxy" pointcut-ref="carPointCut"/>
+        </aop:aspect>
+        <aop:aspect id="userDataImportAspect" ref="aopService">
+            <aop:pointcut id="dataImportPointCut" expression="execution(* cn.zhangdx.service.impl.UserDataImportServiceImpl.doImport(..))"/>
+            <aop:around method="dataImportAroundProxy" pointcut-ref="dataImportPointCut"/>
         </aop:aspect>
     </aop:config>
 </beans>
