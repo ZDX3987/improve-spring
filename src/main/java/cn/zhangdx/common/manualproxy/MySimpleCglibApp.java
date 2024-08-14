@@ -1,4 +1,4 @@
-package cn.zhangdx.common;
+package cn.zhangdx.common.manualproxy;
 
 import cn.zhangdx.pojo.ChildToy;
 import net.sf.cglib.proxy.Enhancer;
