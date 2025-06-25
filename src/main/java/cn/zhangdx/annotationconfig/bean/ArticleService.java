@@ -1,5 +1,9 @@
 package cn.zhangdx.annotationconfig.bean;
 
+import cn.zhangdx.annotationconfig.service.PraiseContentSupport;
+import cn.zhangdx.annotationconfig.service.TopicServiceImpl;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +14,12 @@ import javax.annotation.PreDestroy;
  * @author zhangdx
  * @date 2025/6/4 16:09
  */
+@AllArgsConstructor
 @Component
 public class ArticleService {
 
-    @Autowired
     private ArticleMapper articleMapper;
+    private PraiseContentSupport topicService;
 
     public void createArticle(String articleName) {
         System.out.println("ArticleService 创建文章开始");

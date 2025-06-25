@@ -1,17 +1,17 @@
 package cn.zhangdx.annotationconfig;
 
-import cn.zhangdx.annotationconfig.bean.ArticleMapper;
-import cn.zhangdx.annotationconfig.bean.ImproveSpringAppListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author zhangdx
  * @date 2025/6/4 16:07
  */
+@EnableAspectJAutoProxy
 @Configuration
-@ComponentScan
+@ComponentScan({"cn.zhangdx.annotationconfig"})
 public class ImproveSpringAppConfig {
 
 //    @Bean

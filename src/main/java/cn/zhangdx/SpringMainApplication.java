@@ -1,8 +1,6 @@
 package cn.zhangdx;
 
-import cn.zhangdx.component.event.UserLoginEventPublisher;
-import cn.zhangdx.pojo.BaseChild;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import cn.zhangdx.pojo.Car;
 
 /**
  * @author ZDX
@@ -11,9 +9,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringMainApplication {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
-        applicationContext.getBeanFactory().ignoreDependencyInterface(BaseChild.class);
-        UserLoginEventPublisher userLoginEventPublisher = (UserLoginEventPublisher) applicationContext.getBean("userLoginEventPublisher");
-        userLoginEventPublisher.login("zhangdx");
+//        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
+//        applicationContext.getBeanFactory().ignoreDependencyInterface(BaseChild.class);
+//        UserLoginEventPublisher userLoginEventPublisher = (UserLoginEventPublisher) applicationContext.getBean("userLoginEventPublisher");
+//        userLoginEventPublisher.login("zhangdx");
+        Car car = new Car("大众");
+        car.run(120);
     }
+
 }
