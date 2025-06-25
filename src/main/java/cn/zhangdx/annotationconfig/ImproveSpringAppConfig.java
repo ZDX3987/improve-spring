@@ -14,10 +14,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @ComponentScan({"cn.zhangdx.annotationconfig"})
 public class ImproveSpringAppConfig {
 
-//    @Bean
-//    ArticleMapper articleMapper() {
-//        return new ArticleMapper("ZHANGDX");
-//    }
 
     @Bean
     String authorName() {
