@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @author zhangdx
  * @date 2025/6/4 16:07
  */
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @Configuration
 @ComponentScan({"cn.zhangdx.annotationconfig"})
 public class ImproveSpringAppConfig {

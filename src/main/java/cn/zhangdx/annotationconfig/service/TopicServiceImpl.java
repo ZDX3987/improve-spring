@@ -1,6 +1,7 @@
 package cn.zhangdx.annotationconfig.service;
 
 import cn.zhangdx.pojo.BlogUser;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@AllArgsConstructor
 public class TopicServiceImpl implements TopicService, PraiseContentSupport {
+
+    private String authorName;
 
     /**
      * 对内容点赞
@@ -20,7 +24,7 @@ public class TopicServiceImpl implements TopicService, PraiseContentSupport {
      */
     @Override
     public boolean praise(BlogUser user) {
-        log.info("{} 对主题点赞成功", user.getNickname());
+        log.info("{} 对主题点赞成功, authorName={}", user.getNickname(), authorName);
         return true;
     }
 
