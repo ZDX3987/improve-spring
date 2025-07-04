@@ -9,16 +9,18 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 /**
  * @author zhangdx
  * @date 2025/6/4 16:09
  */
-@AllArgsConstructor
 @Component
 public class ArticleService {
 
+    @Resource
     private ArticleMapper articleMapper;
+    @Autowired
     private PraiseContentSupport topicService;
 
     public void createArticle(String articleName) {

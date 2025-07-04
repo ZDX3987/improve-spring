@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleMapper {
 
-    @Autowired
+//    @Autowired
     private String authorName;
     @Autowired
     private ArticleService articleService;

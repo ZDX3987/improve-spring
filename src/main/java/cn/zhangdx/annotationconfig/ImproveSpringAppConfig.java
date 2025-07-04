@@ -17,7 +17,12 @@ public class ImproveSpringAppConfig {
 
     @Bean
     String authorName() {
-        return "ZHANGDX";
+        return "ZHANGDX6789";
+    }
+
+    @Bean
+    String otherName() {
+        return "hello zdx";
     }
 
 }
