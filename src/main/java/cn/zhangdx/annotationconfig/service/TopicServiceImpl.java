@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * @author zhangdx
@@ -22,9 +21,9 @@ public class TopicServiceImpl implements TopicService, PraiseContentSupport {
     private String otherName;
 
     @Autowired
-    public void setName(String authorName, String otherName) {
-        this.authorName = authorName;
-        this.otherName = otherName;
+    public void setName(List<String> strNames) {
+        this.authorName = strNames.get(0);
+        this.otherName = strNames.get(1);
         System.out.println("TopicServiceImpl setName authorName: " + authorName + ", otherName: "+ otherName);
     }
 
