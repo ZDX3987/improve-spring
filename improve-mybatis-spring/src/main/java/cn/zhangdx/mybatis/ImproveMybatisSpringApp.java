@@ -18,12 +18,16 @@ import java.util.Set;
 public class ImproveMybatisSpringApp {
     public static void main( String[] args ) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MybatisConfig.class);
-//        SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactoryBean");
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-//        List<SysUser> userList = sqlSession.selectList("cn.zhangdx.mybatis.mapper.SysUserMapper.findUserNames", "ZH");
-        SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
-        List<SysUser> userList = sysUserService.getUserList("ZH");
+        // Mybatis原始方式
+        SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactoryBean");
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<SysUser> userList = sqlSession.selectList("cn.zhangdx.mybatis.mapper.SysUserMapper.findUserNames", "ZH");
         userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
-//        sqlSession.close();
+        sqlSession.close();
+
+        // Spring Bean方式
+        SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
+        userList = sysUserService.getUserList("ZH");
+        userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
     }
 }
