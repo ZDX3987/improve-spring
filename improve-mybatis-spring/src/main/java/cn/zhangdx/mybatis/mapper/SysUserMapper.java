@@ -1,5 +1,6 @@
 package cn.zhangdx.mybatis.mapper;
 
+import cn.zhangdx.mybatis.pojo.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface SysUserMapper {
 
-    List<String> findUserNames(@Param("queryName") String queryName);
+    List<SysUser> findUserNames(@Param("queryName") String queryName);
 }

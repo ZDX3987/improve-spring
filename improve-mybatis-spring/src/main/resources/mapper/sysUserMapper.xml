@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.zhangdx.mybatis.mapper.SysUserMapper">
 
-    <select id="findUserNames" resultType="java.lang.String">
-        SELECT nickname FROM sys_user
+    <select id="findUserNames" resultType="cn.zhangdx.mybatis.pojo.SysUser">
+        SELECT * FROM sys_user
         <where>
             <if test="queryName != null and queryName != ''">
                 nickname LIKE CONCAT('%', #{queryName}, '%')

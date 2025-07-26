@@ -6,9 +6,11 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -18,8 +20,9 @@ import java.util.Properties;
  * @author ZDX
  * @date 2025/7/11 14:18
  */
-//@MapperScan("cn.zhangdx.mybatis.mapper")
+@MapperScan(basePackages = "cn.zhangdx.mybatis.mapper")
 @Configuration
+@ComponentScan("cn.zhangdx.mybatis")
 public class MybatisConfig {
 
     @Autowired
@@ -41,7 +44,12 @@ public class MybatisConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean() {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
-        sqlSessionFactoryBean.setConfigLocation(resourceLoader.getResource("classpath:mybatis-config.xml"));
+        try {
+            sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//        sqlSessionFactoryBean.setConfigLocation(resourceLoader.getResource("classpath:mybatis-config.xml"));
         return sqlSessionFactoryBean;
     }
 }
