@@ -5,6 +5,7 @@ import cn.zhangdx.mybatis.pojo.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,8 +17,11 @@ public class SysUserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+    @Resource
+    private SysUser sysUser;
 
     public List<SysUser> getUserList(String queryName) {
+        System.out.println(sysUser.getUsername());
         return sysUserMapper.findUserNames(queryName);
     }
 }

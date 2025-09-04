@@ -33,5 +33,6 @@ public class ImproveMybatisSpringApp {
             userList = sysUserService.getUserList("ZH");
             userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
         }
+        applicationContext.getBean("sysUserMapper");
     }
 }
