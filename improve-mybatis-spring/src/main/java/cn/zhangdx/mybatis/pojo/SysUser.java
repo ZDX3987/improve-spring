@@ -1,5 +1,6 @@
 package cn.zhangdx.mybatis.pojo;
 
+import cn.zhangdx.mybatis.enumeration.SysUserStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,5 +21,5 @@ public class SysUser {
     private String avatar;
     private String introduce;
     private LocalDateTime createTime;
-    private boolean status;
+    private SysUserStatus status;
 }

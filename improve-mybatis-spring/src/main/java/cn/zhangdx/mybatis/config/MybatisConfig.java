@@ -1,5 +1,6 @@
 package cn.zhangdx.mybatis.config;
 
+import cn.zhangdx.mybatis.internal.ImproveEnumTypeHandler;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -43,6 +44,7 @@ public class MybatisConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean() {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
+        sqlSessionFactoryBean.setDefaultEnumTypeHandler(ImproveEnumTypeHandler.class);
 //        sqlSessionFactoryBean.setConfigLocation(resourceLoader.getResource("classpath:mybatis-config.xml"));
         try {
             sqlSessionFactoryBean.setMapperLocations(resourceLoader.getResources("classpath:mapper/*.xml"));
