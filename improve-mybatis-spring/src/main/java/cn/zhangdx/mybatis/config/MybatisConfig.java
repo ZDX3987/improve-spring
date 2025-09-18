@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -23,6 +27,7 @@ import java.util.Properties;
 @MapperScan(basePackages = "cn.zhangdx.mybatis.mapper")
 @Configuration
 @ComponentScan("cn.zhangdx.mybatis")
+@EnableTransactionManagement
 public class MybatisConfig {
 
     @Autowired
@@ -52,5 +57,10 @@ public class MybatisConfig {
             throw new RuntimeException(e);
         }
         return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 }

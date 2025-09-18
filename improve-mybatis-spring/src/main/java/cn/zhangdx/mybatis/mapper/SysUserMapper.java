@@ -12,4 +12,6 @@ import java.util.List;
 public interface SysUserMapper {
 
     List<SysUser> findUserNames(@Param("queryName") String queryName);
+
+    void updateNickname(@Param("newName") String newName);
 }

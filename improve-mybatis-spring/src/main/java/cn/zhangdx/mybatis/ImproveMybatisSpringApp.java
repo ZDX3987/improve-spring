@@ -30,9 +30,9 @@ public class ImproveMybatisSpringApp {
         } else {
             // Spring Bean方式
             SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
-            userList = sysUserService.getUserList("ZH");
-            userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
+//            userList = sysUserService.getUserList("ZH");
+//            userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
+            sysUserService.updateUserName("Hello MyBatis");
         }
-        applicationContext.getBean("sysUserMapper");
     }
 }

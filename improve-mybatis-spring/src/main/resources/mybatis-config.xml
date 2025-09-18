@@ -4,6 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper resource="mapper/sysUserMapper.xml"/>
+<!--        <mapper resource="mapper/SysUserMapper.xml"/>-->
+        <mapper class="cn.zhangdx.mybatis.mapper.SysUserMapper" />
     </mappers>
 </configuration>

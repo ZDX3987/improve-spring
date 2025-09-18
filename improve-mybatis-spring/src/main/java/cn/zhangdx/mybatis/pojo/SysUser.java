@@ -22,4 +22,5 @@ public class SysUser {
     private String introduce;
     private LocalDateTime createTime;
     private SysUserStatus status;
+    private LocalDateTime updatedAt;
 }
