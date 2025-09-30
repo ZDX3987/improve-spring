@@ -9,16 +9,18 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author ZDX
  * @date 2025/9/29 23:59
  */
-@ComponentScan("cn.zhangdx.improve.service")
+@EnableAspectJAutoProxy
+@ComponentScan("cn.zhangdx.improve")
 @Configuration
 public class ImproveAopConfiguration {
 
-    @Bean
+//    @Bean
     public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
         return new DefaultAdvisorAutoProxyCreator();
     }
@@ -31,7 +33,9 @@ public class ImproveAopConfiguration {
     @Bean
     public Advisor advisor(MethodInterceptor methodInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("execution(* cn.zhangdx.improve.service.impl.*.*(..))");
-        return new DefaultPointcutAdvisor(pointcut, methodInterceptor);
+        pointcut.setExpression("execution(* cn.zhangdx.improve.service.*.*(..))");
+        DefaultPointcutAdvisor defaultPointcutAdvisor = new DefaultPointcutAdvisor(pointcut, methodInterceptor);
+        defaultPointcutAdvisor.setOrder(12);
+        return defaultPointcutAdvisor;
     }
 }
