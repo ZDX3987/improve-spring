@@ -16,6 +16,7 @@
         <module>improve-spring-mvc</module>
         <module>improve-mybatis-spring</module>
         <module>improve-springmvc-xml</module>
+        <module>improve-spring-aop</module>
     </modules>
 
     <properties>
@@ -26,11 +27,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>5.3.39</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
