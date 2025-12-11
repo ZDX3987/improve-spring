@@ -2,8 +2,10 @@ package cn.zhangdx.improve.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,11 @@ public class ProcessTimeAspect {
     @Pointcut("execution(* cn.zhangdx.improve.service.*.*(..))")
     public void processPointcut() {}
 
+    @Before("processPointcut()")
+    public void beforeDemo() {
+        log.info("方法执行 Before 切面");
+    }
+
     @Around(value = "processPointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("方法执行计时器，开始执行方法");
@@ -30,4 +37,10 @@ public class ProcessTimeAspect {
         log.info("方法执行计时器，methodName: {}, spend: {}", joinPoint.getSignature().getName(), spendMillis);
         return result;
     }
+
+    @AfterReturning(value = "processPointcut()", returning = "value")
+    public void afterDemo(String value) {
+        log.info("方法执行 Return 切面：{}", value);
+    }
+
 }
