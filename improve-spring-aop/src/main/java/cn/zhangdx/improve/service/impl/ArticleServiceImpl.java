@@ -13,4 +13,9 @@ public class ArticleServiceImpl implements ArticleService {
     public void printArticleName(String articleName) {
         System.out.println("打印文章名称：" + articleName);
     }
+
+    @Override
+    public String getArticleText() {
+        return "这是一篇文章测试内容";
+    }
 }

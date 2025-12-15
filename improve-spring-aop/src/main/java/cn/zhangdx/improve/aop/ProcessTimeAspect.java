@@ -30,17 +30,17 @@ public class ProcessTimeAspect {
 
     @Around(value = "processPointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("方法执行计时器，开始执行方法");
+        String methodName = joinPoint.getSignature().getName();
+        log.info("方法执行计时器，methodName: {}, 开始执行方法", methodName);
         long startMillis = System.currentTimeMillis();
         Object result = joinPoint.proceed();
         long spendMillis = System.currentTimeMillis() - startMillis;
-        log.info("方法执行计时器，methodName: {}, spend: {}", joinPoint.getSignature().getName(), spendMillis);
+        log.info("方法执行计时器，methodName: {}, 执行结束, spend: {}", methodName, spendMillis);
         return result;
     }
 
     @AfterReturning(value = "processPointcut()", returning = "value")
     public void afterDemo(String value) {
-        log.info("方法执行 Return 切面：{}", value);
+        log.info("方法执行 After Return 切面：{}", value);
     }
-
 }

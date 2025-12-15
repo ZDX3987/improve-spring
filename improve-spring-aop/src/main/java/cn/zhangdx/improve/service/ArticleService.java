@@ -7,4 +7,6 @@ package cn.zhangdx.improve.service;
 public interface ArticleService {
 
     void printArticleName(String articleName);
+
+    String getArticleText();
 }

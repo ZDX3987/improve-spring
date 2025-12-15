@@ -14,5 +14,6 @@ public class ImproveAopApplication {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ImproveAopConfiguration.class);
         ArticleService articleService = applicationContext.getBean(ArticleService.class);
         articleService.printArticleName("Spring中的FactoryBean是什么？");
+        System.out.println(articleService.getArticleText());
     }
 }
