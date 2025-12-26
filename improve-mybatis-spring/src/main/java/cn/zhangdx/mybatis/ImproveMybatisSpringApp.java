@@ -18,7 +18,7 @@ import java.util.Set;
 public class ImproveMybatisSpringApp {
     public static void main( String[] args ) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MybatisConfig.class);
-        boolean useSpringType = true;
+        boolean useSpringType = false;
         List<SysUser> userList;
         if (!useSpringType) {
             // Mybatis原始方式
