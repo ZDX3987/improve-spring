@@ -14,4 +14,6 @@ public interface SysUserMapper {
     List<SysUser> findUserNames(@Param("queryName") String queryName);
 
     void updateNickname(@Param("newName") String newName);
+
+    void insertNewUser(@Param("user") SysUser sysUser);
 }

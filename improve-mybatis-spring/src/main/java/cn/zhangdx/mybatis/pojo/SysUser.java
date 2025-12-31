@@ -2,6 +2,7 @@ package cn.zhangdx.mybatis.pojo;
 
 import cn.zhangdx.mybatis.enumeration.SysUserStatus;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
  * @author ZDX
  * @date 2020/06/30 22:20
  */
+@Accessors(chain = true)
 @Data
 public class SysUser {
     private Integer id;

@@ -3,8 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="jdbc.properties"/>
+    <settings>
+        <setting name="defaultEnumTypeHandler" value="cn.zhangdx.mybatis.internal.ImproveEnumTypeHandler"/>
+    </settings>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClassName}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
     <mappers>
-<!--        <mapper resource="mapper/SysUserMapper.xml"/>-->
-        <mapper class="cn.zhangdx.mybatis.mapper.SysUserMapper" />
+        <mapper resource="mapper/SysUserMapper.xml"/>
+<!--        <mapper class="cn.zhangdx.mybatis.mapper.SysUserMapper" />-->
     </mappers>
 </configuration>

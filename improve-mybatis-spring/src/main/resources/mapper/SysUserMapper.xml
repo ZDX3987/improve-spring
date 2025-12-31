@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.zhangdx.mybatis.mapper.SysUserMapper">
+    <insert id="insertNewUser">
+        insert into sys_user(username, nickname, password) values (#{user.username}, #{user.nickname}, #{user.password})
+    </insert>
     <update id="updateNickname">
         update sys_user set nickname = #{newName} where id = 1
     </update>
-
     <select id="findUserNames" resultType="cn.zhangdx.mybatis.pojo.SysUser">
         SELECT * FROM sys_user
         <where>
