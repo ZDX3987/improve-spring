@@ -20,6 +20,9 @@ public class MyBatisDemo {
     public static void main(String[] args) throws IOException {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
         SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        String nickname = sqlSession.selectOne("cn.zhangdx.mybatis.mapper.SysUserMapper.findNickname", 1);
+        System.out.println("nickname: " + nickname);
         List<SysUser> userList = sqlSession.selectList("cn.zhangdx.mybatis.mapper.SysUserMapper.findUserNames", "ZH");
         userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
         SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);

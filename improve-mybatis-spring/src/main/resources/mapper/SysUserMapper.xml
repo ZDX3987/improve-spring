@@ -16,4 +16,13 @@
             </if>
         </where>
     </select>
+    <select id="findNickname" resultType="java.lang.String">
+        select nickname from sys_user where id = #{userId}
+    </select>
+
+    <cache/>
+
+    <resultMap id="sysUserVOResult" type="cn.zhangdx.mybatis.pojo.UserVO">
+
+    </resultMap>
 </mapper>
