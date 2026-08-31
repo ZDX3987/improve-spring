@@ -17,6 +17,7 @@
         <module>improve-mybatis-spring</module>
         <module>improve-springmvc-xml</module>
         <module>improve-spring-aop</module>
+        <module>improve-spring-common</module>
     </modules>
 
     <properties>
