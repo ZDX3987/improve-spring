@@ -3,6 +3,7 @@ package cn.zhangdx.mybatis.service;
 import cn.zhangdx.mybatis.mapper.SysUserMapper;
 import cn.zhangdx.mybatis.pojo.SysUser;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,8 @@ public class SysUserService {
     private SysUserMapper sysUserMapper;
     @Resource
     private SysUser sysUser;
+    @Autowired
+    private BlogAuthorService blogAuthorService;
 
     public SysUserService(SysUserMapper sysUserMapper) {
         this.sysUserMapper = sysUserMapper;
@@ -35,5 +38,6 @@ public class SysUserService {
     public void updateUserName(String newName) {
         log.info("updateUserName, newName-{}", newName);
         sysUserMapper.updateNickname(newName);
+        blogAuthorService.updateAuthorName(newName);
     }
 }

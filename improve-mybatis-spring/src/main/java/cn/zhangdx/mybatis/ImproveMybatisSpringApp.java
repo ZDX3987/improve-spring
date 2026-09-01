@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Set;
 public class ImproveMybatisSpringApp {
     public static void main( String[] args ) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MybatisConfig.class);
-        boolean useSpringType = false;
+        boolean useSpringType = true;
         List<SysUser> userList;
         if (!useSpringType) {
             // Mybatis原始方式
@@ -30,9 +31,9 @@ public class ImproveMybatisSpringApp {
         } else {
             // Spring Bean方式
             SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
-            userList = sysUserService.getUserList("ZH");
-            userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
-//            sysUserService.updateUserName("Hello MyBatis");
+//            userList = sysUserService.getUserList("ZH");
+//            userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
+            sysUserService.updateUserName("测试的名字");
         }
     }
 }
