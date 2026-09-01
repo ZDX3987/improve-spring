@@ -33,7 +33,7 @@ public class ImproveMybatisSpringApp {
             SysUserService sysUserService = applicationContext.getBean(SysUserService.class);
 //            userList = sysUserService.getUserList("ZH");
 //            userList.forEach(user -> System.out.println(user.getId() + ":" + user.getUsername()));
-            sysUserService.updateUserName("测试的名字");
+            sysUserService.updateUserName("测试的名字222");
         }
     }
 }

@@ -24,6 +24,7 @@ public class BlogAuthorService {
 
     @Transactional
     public void updateAuthorName(String authorName) {
-        blogAuthorMapper.modifyAuthorName(1, authorName);
+        blogAuthorMapper.modifyAuthorName(2, authorName);
+        throw new RuntimeException("测试嵌套事务中抛出异常");
     }
 }
