@@ -2,6 +2,7 @@ package cn.zhangdx.improve;
 
 import cn.zhangdx.improve.config.ImproveAopConfiguration;
 import cn.zhangdx.improve.service.ArticleService;
+import cn.zhangdx.improve.service.AuthUserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -15,5 +16,7 @@ public class ImproveAopApplication {
         ArticleService articleService = applicationContext.getBean(ArticleService.class);
         articleService.printArticleName("Spring中的FactoryBean是什么？");
         System.out.println(articleService.getArticleText());
+        AuthUserService authUserService = applicationContext.getBean(AuthUserService.class);
+        authUserService.auth();
     }
 }
