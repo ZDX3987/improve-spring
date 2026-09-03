@@ -38,6 +38,10 @@ public class SysUserService {
     public void updateUserName(String newName) {
         log.info("updateUserName, newName-{}", newName);
         sysUserMapper.updateNickname(newName);
-        blogAuthorService.updateAuthorName(newName);
+        try {
+            blogAuthorService.updateAuthorName(newName);
+        } catch (Exception e) {
+            log.info("catch到测试的嵌套事务异常");
+        }
     }
 }
